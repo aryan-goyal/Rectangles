@@ -25,7 +25,11 @@ def generate_rectangle(points, name):
     top_right = Point(points[1][0], points[1][1])
     bottom_right = Point(points[1][0], points[0][1])
     bottom_left = Point(points[0][0], points[0][1])
-    return Rectangle(top_left, top_right, bottom_right, bottom_left, name)
+
+    try:
+        return Rectangle(top_left, top_right, bottom_right, bottom_left, name)
+    except Exception as e:
+        print('{errors: ["Unable to generate rectangle"], exception: ', e, '}')
 
 def validate_rect(rect):
     """
@@ -64,7 +68,7 @@ def get_rectangles(data):
     
         return aggr
 
-def display_rectangles(rectangles):
+def show_rectangles(rectangles, filepath):
     """
     :type rect: list, filename: string
     :rtype: None
@@ -78,14 +82,23 @@ def display_rectangles(rectangles):
         ax.add_patch(MatRectangle((rect.bottom_left.x, rect.bottom_left.y), width, height, fill=False))
     
     ax.plot([0, max_workspace+5],[0, max_workspace+5], linestyle='none')
-
-    plt.show()
+    # plt.show()
+    
+    try:
+        filename = "figures/" + filepath.rsplit('/',1)[1].rsplit('.',1)[0] +".png"
+        plt.savefig(filename)
+    except Exception as e:
+        print('{errors: ["Unable to save figure"], exception: ', e, '}')
 
 if __name__ == "__main__":
-    data = read_json(sys.argv[1])
+    filepath = sys.argv[1]
+    data = read_json(filepath)
 
     rectangles = []
     if data:
         rectangles = get_rectangles(data)
 
-        display_rectangles(rectangles)
+        # for x in rectangles:
+        #     print(x)
+
+        show_rectangles(rectangles, filepath)
