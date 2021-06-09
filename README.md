@@ -8,7 +8,7 @@ Analyze rectangles and features that exist among rectangles.
 
 ## Development
 
-The solution was developed in Python using the Shapely library. The visualizations are created using the Matplotlib library. 
+The solution was developed in Python. The visualizations are created using the Matplotlib library. 
 
 ## Usage
 
