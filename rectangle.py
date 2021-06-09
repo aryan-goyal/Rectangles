@@ -1,11 +1,3 @@
-class Point:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-
-    def __str__(self):
-        return "({},{})".format(self.x, self.y)
-
 class Rectangle:
     def __init__(self, top_left, top_right, bottom_right, bottom_left, name):
         self.top_left = top_left

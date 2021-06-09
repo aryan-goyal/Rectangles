@@ -1,7 +1,10 @@
 import json
 import sys
-from rectangle import Point
+from point import Point
 from rectangle import Rectangle
+
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle as  MatRectangle
 
 def read_json(file_name):
     """
@@ -61,12 +64,28 @@ def get_rectangles(data):
     
         return aggr
 
+def display_rectangles(rectangles):
+    """
+    :type rect: list, filename: string
+    :rtype: None
+    """
+    fig, ax = plt.subplots()
+    max_workspace = 0
+    for rect in rectangles:
+        width = rect.width()
+        height = rect.height()
+        max_workspace = max(max_workspace, width, height)
+        ax.add_patch(MatRectangle((rect.bottom_left.x, rect.bottom_left.y), width, height, fill=False))
+    
+    ax.plot([0, max_workspace+5],[0, max_workspace+5], linestyle='none')
+
+    plt.show()
 
 if __name__ == "__main__":
     data = read_json(sys.argv[1])
 
+    rectangles = []
     if data:
         rectangles = get_rectangles(data)
 
-        for x in rectangles:
-            print(x.width(), x.height())
+        display_rectangles(rectangles)
