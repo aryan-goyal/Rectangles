@@ -21,12 +21,12 @@ A rectangle entity is defined by floating-point numbers on a cartesian plane. Th
             "name": "rectangle1",
             "points": [
                 {
-                    "x": 0,
-                    "y": 0
+                    "x": 0.0,
+                    "y": 0.0
                 },
                 {
-                    "x": 4,
-                    "y": 4
+                    "x": 4.0,
+                    "y": 4.0
                 }
             ]   
         },
@@ -34,12 +34,12 @@ A rectangle entity is defined by floating-point numbers on a cartesian plane. Th
             "name": "rectangle2",
             "points": [
                 {
-                    "x": 1,
-                    "y": 1
+                    "x": 1.0,
+                    "y": 1.0
                 },
                 {
-                    "x": 3,
-                    "y": 3
+                    "x": 3.0,
+                    "y": 3.0
                 }
             ]   
         }
