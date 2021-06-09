@@ -90,6 +90,9 @@ def show_rectangles(rectangles, filepath):
     except Exception as e:
         print('{errors: ["Unable to save figure"], exception: ', e, '}')
 
+def detectFeatures(self, other):
+    pass
+
 if __name__ == "__main__":
     filepath = sys.argv[1]
     data = read_json(filepath)
@@ -98,7 +101,7 @@ if __name__ == "__main__":
     if data:
         rectangles = get_rectangles(data)
 
-        # for x in rectangles:
-        #     print(x)
+        print(rectangles[0].intersects(rectangles[1]))
+        
 
-        show_rectangles(rectangles, filepath)
+        # show_rectangles(rectangles, filepath)
