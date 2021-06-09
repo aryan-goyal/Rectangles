@@ -1,8 +1,8 @@
 class Rectangle:
     def __init__(self, top_left, top_right, bottom_right, bottom_left, name):
         """
-        :type top_left: float, top_right: float, bottom_right: float, bottom_left: float, name: string
-        :rtype: dict
+        :type top_left: Point, top_right: Point, bottom_right: Point, bottom_left: Point, name: string
+        :rtype: none
         """
         self.top_left = top_left
         self.top_right = top_right
