@@ -100,7 +100,7 @@ def detect_features(rectangles):
     if rectangles[0].intersects(rectangles[1]) or rectangles[1].contains(rectangles[0]):
         feature = "Intersects"
     elif rectangles[0].contains(rectangles[1]) or rectangles[1].contains(rectangles[0]):
-        feature = "Contains"
+        feature = "Containment"
     elif rectangles[0].adjacent_subline(rectangles[1]) or rectangles[1].adjacent_subline(rectangles[0]):
         feature = "Adjacent (Sub-line)"
     elif rectangles[0].adjacent_proper(rectangles[1]) or rectangles[1].adjacent_proper(rectangles[0]):
@@ -109,7 +109,13 @@ def detect_features(rectangles):
         feature = "Adjacent (Partial)"
     else:
         feature = "No Features Found"
-    print(feature)
+
+    output = {
+        rectangles[0].name: rectangles[1].name,
+        "feature": feature
+    }
+
+    print(json.dumps(output))
 
 
 if __name__ == "__main__":
