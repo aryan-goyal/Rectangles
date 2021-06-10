@@ -93,7 +93,7 @@ def show_rectangles(rectangles, filepath):
 def detect_features(rectangles):
     """
     :type rect: list, filename: str
-    :rtype: None
+    :rtype: str
     """
     feature = ""
     
@@ -115,7 +115,7 @@ def detect_features(rectangles):
         "feature": feature
     }
 
-    print(json.dumps(output))
+    return json.dumps(output)
 
 
 if __name__ == "__main__":
@@ -125,5 +125,7 @@ if __name__ == "__main__":
     rectangles = []
     if data:
         rectangles = get_rectangles(data)
-        show_rectangles(rectangles, filepath)
-        detect_features(rectangles)
+        if rectangles:
+            show_rectangles(rectangles, filepath)
+            feature = detect_features(rectangles)
+            print(feature)

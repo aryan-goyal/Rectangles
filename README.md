@@ -69,6 +69,10 @@ Example: Adjacent (Proper)
 
 ## Testing
 
+Unit tests can be run with the included testing library [pytest](https://docs.pytest.org/en/6.2.x/).
+
+In the directory where [test_all.py](https://github.com/aryan-goyal/Rectangles/blob/main/test_all.py) is located run: `pytest`
+
 The tests folder contains valid JSON for each of the differnt features as well as for no features and an invalid JSON. 
 
 ## Local Setup
