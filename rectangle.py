@@ -30,7 +30,7 @@ class Rectangle:
         :type other: Rectangle
         :rtype: bool
         """
-        #collision detection using: Separating Axis Theorem
+        #collision detection using Separating Axis Theorem, if opposite corners pass through each other then intersect
         return not (self.top_right.x < other.bottom_left.x or self.bottom_left.x > other.top_right.x or \
                     self.top_right.y < other.bottom_left.y or self.bottom_left.y > other.top_right.y)
 
@@ -39,6 +39,7 @@ class Rectangle:
         :type other: Rectangle
         :rtype: bool
         """
+        #compare corners
         #adjacent proper top
         adjacent_top = self.top_left == other.bottom_left and self.top_right == other.bottom_right
 
@@ -58,7 +59,23 @@ class Rectangle:
         :type other: Rectangle
         :rtype: bool
         """
-        pass
+        #adjacent partial top
+        adjacent_top = self.top_left.x < other.bottom_right.x and self.top_left.x > other.bottom_left.x and self.top_left.y == other.bottom_right.y or \
+                    self.top_right.x > other.bottom_left.x and self.top_right.x < other.bottom_right.x and self.top_left.y == other.bottom_right.y
+        
+        #adjacent partial bottom
+        adjacent_bottom = self.bottom_left.x < other.top_right.x and self.bottom_left.x > other.top_left.x and self.bottom_left.y == other.top_left.y or \
+                    self.bottom_right.x > other.top_left.x and self.bottom_right.x < other.top_right.x and self.bottom_right.y == other.top_right.y   
+        
+        #adjacent partial left
+        adjacent_left = self.top_left.x == other.top_right.x and self.top_left.y < other.top_right.y and self.top_left.y > other.bottom_right.y or \
+                    self.bottom_left.x == other.top_right.x and self.bottom_left.y < other.top_right.y and self.bottom_left.y > other.bottom_right.y   
+        
+        #adjacent partial right
+        adjacent_right = self.top_right.x == other.top_left.x and self.top_right.y < other.top_left.y and self.top_right.y > other.bottom_left.y or \
+                    self.bottom_right.x == other.top_left.x and self.bottom_right.y < other.top_left.y and self.bottom_right.y > other.bottom_left.y   
+        
+        return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
     def adjacentSubline(self, other):
         """
@@ -66,20 +83,16 @@ class Rectangle:
         :rtype: bool
         """
         #adjacent subline top
-        adjacent_top = self.top_left.x < other.bottom_left.x and self.top_left.y == other.bottom_left.y and \
-                    self.top_right.x > other.bottom_right.x and self.top_right.y == other.bottom_right.y
+        adjacent_top = self.top_left.x < other.bottom_left.x and self.top_left.y == other.bottom_left.y and self.top_right.x > other.bottom_right.x
         
         #adjacent subline bottom
-        adjacent_bottom = self.bottom_left.x < other.top_left.x and self.bottom_left.y == other.top_left.y and \
-                    self.bottom_right.x > other.top_right.x and self.bottom_right.y == other.top_right.y   
+        adjacent_bottom = self.bottom_left.x < other.top_left.x and self.bottom_left.y == other.top_left.y and self.bottom_right.x > other.top_right.x
         
         #adjacent subline left
-        adjacent_left = self.top_left.x == other.top_right.x and self.top_left.y > other.top_right.y and \
-                    self.bottom_left.x == other.bottom_right.x and self.bottom_left.y < other.bottom_right.y
+        adjacent_left = self.top_left.x == other.top_right.x and self.top_left.y > other.top_right.y and self.bottom_left.y < other.bottom_right.y
         
         #adjacent subline right
-        adjacent_right = self.top_right.x == other.top_left.x and self.top_right.y > other.top_left.y and \
-                    self.bottom_right.x == other.bottom_left.x and self.bottom_right.y < other.bottom_left.y
+        adjacent_right = self.top_right.x == other.top_left.x and self.top_right.y > other.top_left.y and self.bottom_right.y < other.bottom_left.y
         
         return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
