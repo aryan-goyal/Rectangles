@@ -8,7 +8,7 @@ from matplotlib.patches import Rectangle as  MatRectangle
 
 def read_json(file_name):
     """
-    :type file_name: string
+    :type file_name: str
     :rtype: dict
     """
     f = open(file_name,)
@@ -18,7 +18,7 @@ def read_json(file_name):
 
 def generate_rectangle(points, name):
     """
-    :type points: dict, name: string
+    :type points: dict, name: str
     :rtype: Rectangle
     """
     top_left = Point(points[0][0], points[1][1])
@@ -44,7 +44,7 @@ def validate_rect(rect):
 def validate_json(rectangles):
     """
     :type rect: dict
-    :rtype: boolean
+    :rtype: bool
     """
     valid = True
     for rect in rectangles:
@@ -70,7 +70,7 @@ def get_rectangles(data):
 
 def show_rectangles(rectangles, filepath):
     """
-    :type rect: list, filename: string
+    :type rect: list, filename: str
     :rtype: None
     """
     fig, ax = plt.subplots()
@@ -100,8 +100,9 @@ if __name__ == "__main__":
     rectangles = []
     if data:
         rectangles = get_rectangles(data)
-
-        print(rectangles[0].intersects(rectangles[1]))
+        # print(rectangles[0])
+        # print(rectangles[1])
+        print(rectangles[0].adjacentProper(rectangles[1]))
         
 
         # show_rectangles(rectangles, filepath)
