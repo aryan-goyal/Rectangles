@@ -31,8 +31,8 @@ class Rectangle:
         :rtype: bool
         """
         #collision detection using Separating Axis Theorem, if opposite corners pass through each other then intersect
-        return not (self.top_right.x < other.bottom_left.x or self.bottom_left.x > other.top_right.x or \
-                    self.top_right.y < other.bottom_left.y or self.bottom_left.y > other.top_right.y)
+        return not (self.top_right.x <= other.bottom_left.x or self.bottom_left.x >= other.top_right.x or \
+                    self.top_right.y <= other.bottom_left.y or self.bottom_left.y >= other.top_right.y)
 
     def adjacentProper(self, other):
         """
