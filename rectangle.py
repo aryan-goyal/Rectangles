@@ -65,20 +65,23 @@ class Rectangle:
         :type other: Rectangle
         :rtype: bool
         """
-        # #adjacent proper top
-        # adjacent_top = self.top_left.x == other.bottom_left.x and self.top_left.y == other.bottom_left.y and \
-        #             self.top_right.x == other.bottom_right.x and self.top_right.y == other.bottom_right.y
-        # #adjacent proper bottom
-        # adjacent_bottom = self.bottom_left.x == other.top_left.x and self.bottom_left.y == other.top_left.y and \
-        #             self.bottom_right.x == other.top_right.x and self.bottom_right.y == other.top_right.y
-        # #adjacent proper left
-        # adjacent_left = self.top_left.x == other.top_right.x and self.top_left.y == other.top_right.y and \
-        #             self.bottom_left.x == other.bottom_right.x and self.bottom_left.y == other.bottom_right.y
-
-        # #adjacent proper right
-        # adjacent_right = self.top_right.x == other.top_left.x and self.top_right.y == other.top_left.y and \
-        #             self.bottom_right.x == other.bottom_left.x and self.bottom_right.y == other.bottom_left.y
-        pass
+        #adjacent subline top
+        adjacent_top = self.top_left.x < other.bottom_left.x and self.top_left.y == other.bottom_left.y and \
+                    self.top_right.x > other.bottom_right.x and self.top_right.y == other.bottom_right.y
+        
+        #adjacent subline bottom
+        adjacent_bottom = self.bottom_left.x < other.top_left.x and self.bottom_left.y == other.top_left.y and \
+                    self.bottom_right.x > other.top_right.x and self.bottom_right.y == other.top_right.y   
+        
+        #adjacent subline left
+        adjacent_left = self.top_left.x == other.top_right.x and self.top_left.y > other.top_right.y and \
+                    self.bottom_left.x == other.bottom_right.x and self.bottom_left.y < other.bottom_right.y
+        
+        #adjacent subline right
+        adjacent_right = self.top_right.x == other.top_left.x and self.top_right.y > other.top_left.y and \
+                    self.bottom_right.x == other.bottom_left.x and self.bottom_right.y < other.bottom_left.y
+        
+        return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
     def contains(self, other):
         """

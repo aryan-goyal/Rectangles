@@ -102,7 +102,7 @@ if __name__ == "__main__":
         rectangles = get_rectangles(data)
         # print(rectangles[0])
         # print(rectangles[1])
-        print(rectangles[0].adjacentProper(rectangles[1]))
+        print(rectangles[0].adjacentSubline(rectangles[1]))
         
 
         # show_rectangles(rectangles, filepath)

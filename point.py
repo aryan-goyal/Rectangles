@@ -11,8 +11,12 @@ class Point:
         return "({},{})".format(self.x, self.y)
 
     def __eq__(self, other): 
+        """
+        :type x: Point
+        :rtype: bool
+        """
         if not isinstance(other, Point):
-            # don't attempt to compare against unrelated types
+            # should not compare against unrelated types
             return NotImplemented
 
         return self.x == other.x and self.y == other.y
