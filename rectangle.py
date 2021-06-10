@@ -1,5 +1,5 @@
 class Rectangle:
-    def __init__(self, top_left, top_right, bottom_right, bottom_left, name):
+    def __init__(self, top_left, top_right, bottom_right, bottom_left, name=""):
         """
         :type top_left: Point, top_right: Point, bottom_right: Point, bottom_left: Point, name: string
         :rtype: none
@@ -30,11 +30,13 @@ class Rectangle:
         :type other: Rectangle
         :rtype: bool
         """
-        #collision detection using Separating Axis Theorem, if opposite corners pass through each other then intersect
+        #collision detection using Separating Axis Theorem, if opposite corners pass through each other then intersect, and remove the intersection case
         return not (self.top_right.x <= other.bottom_left.x or self.bottom_left.x >= other.top_right.x or \
-                    self.top_right.y <= other.bottom_left.y or self.bottom_left.y >= other.top_right.y)
+                    self.top_right.y <= other.bottom_left.y or self.bottom_left.y >= other.top_right.y) and not \
+                    self.top_right.x > other.top_right.x and self.top_right.y > other.top_right.y \
+                    and self.bottom_left.x < other.bottom_left.x and self.bottom_left.y < other.bottom_left.y
 
-    def adjacentProper(self, other):
+    def adjacent_proper(self, other):
         """
         :type other: Rectangle
         :rtype: bool
@@ -54,7 +56,7 @@ class Rectangle:
         
         return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
-    def adjacentPartial(self, other):
+    def adjacent_partial(self, other):
         """
         :type other: Rectangle
         :rtype: bool
@@ -77,7 +79,7 @@ class Rectangle:
         
         return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
-    def adjacentSubline(self, other):
+    def adjacent_subline(self, other):
         """
         :type other: Rectangle
         :rtype: bool

@@ -10,9 +10,15 @@ Analyze rectangles and features that exist among rectangles (Adjacent, containme
 
 The solution was developed in Python. The visualizations are created using the Matplotlib library. 
 
+The [Point](https://github.com/aryan-goyal/Rectangles/blob/main/point.py) class contains an x and a y corrdinate which defines a point. The [Rectangle](https://github.com/aryan-goyal/Rectangles/blob/main/rectangle.py) class contains four Points and potientially a name for the rectangle. Methods for comparison for intersect, contains, adjacent proper, adjacent partial, and adjacent subline are defined within the class.
+
 ## Usage
 
-A rectangle entity is defined by floating-point numbers on a cartesian plane. The rectangles (2 or more) can be provided in a JSON format using the following schema. Additional rectangles can be added to the list as needed for feature analysis.
+Use the following command followed by a valid JSON filename: 
+
+`python3 run.py rectangles.json`
+
+A rectangle entity is defined by floating-point numbers on a cartesian plane. The rectangles can be provided in a JSON format using the following schema. 
 
 ```
 {
@@ -40,53 +46,30 @@ The reponses will be output in a JSON format similar to the following:
 Example: Containment
 ```
 {
-    "rectangles": [
-        {
-            "rectangle1":[
-                {
-                    "name": "rectangle2",
-                    "feature": "Containment",
-                }
-            ]
-        }
-    ] 
+    "rectangle1": "rectangle2",
+    "feature": "Containment"
 }
 ```
 
 Example: Intersects
 ```
 {
-    "rectangles": [
-        {
-            "rectangle1":[
-                {
-                    "name": "rectangle2",
-                    "feature": "Intersects",
-                }
-            ]
-        }
-    ] 
+    "rectangle1": "rectangle2", 
+    "feature": "Intersects"
 }
-
 ```
 
 Example: Adjacent (Proper)
 ```
 {
-    "rectangles": [
-        {
-            "rectangle1":[
-                {
-                    "name": "rectangle2",
-                    "feature": "Adjacent (Proper)",
-                }
-            ]
-        }
-    ] 
+    "rectangle1": "rectangle2", 
+    "feature": "Adjacent (Proper)"
 }
 ```
 
 ## Testing
+
+The tests folder contains valid JSON for each of the differnt features as well as for no features and an invalid JSON. 
 
 ## Local Setup
 
