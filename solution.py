@@ -90,8 +90,26 @@ def show_rectangles(rectangles, filepath):
     except Exception as e:
         print('{errors: ["Unable to save figure"], exception: ', e, '}')
 
-def detectFeatures(self, other):
-    pass
+def detect_features(rectangles):
+    """
+    :type rect: list, filename: str
+    :rtype: None
+    """
+    feature = ""
+    
+    if rectangles[0].intersects(rectangles[1]):
+        feature = "Intersects"
+    elif rectangles[0].contains(rectangles[1]):
+        feature = "Contains"
+    elif rectangles[0].adjacent_subline(rectangles[1]):
+        feature = "Adjacent (Sub-line)"
+    elif rectangles[0].adjacent_proper(rectangles[1]):
+        feature = "Adjacent (Proper)"
+    elif rectangles[0].adjacent_partial(rectangles[1]):
+        feature = "Adjacent (Partial)"
+    else:
+        feature = "No Features Found"
+    print(feature)
 
 if __name__ == "__main__":
     filepath = sys.argv[1]
@@ -100,9 +118,6 @@ if __name__ == "__main__":
     rectangles = []
     if data:
         rectangles = get_rectangles(data)
-        # print(rectangles[0])
-        # print(rectangles[1])
-        print(rectangles[0].intersects(rectangles[1]))
-        
+        detect_features(rectangles)
 
         # show_rectangles(rectangles, filepath)

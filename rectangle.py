@@ -34,7 +34,7 @@ class Rectangle:
         return not (self.top_right.x <= other.bottom_left.x or self.bottom_left.x >= other.top_right.x or \
                     self.top_right.y <= other.bottom_left.y or self.bottom_left.y >= other.top_right.y)
 
-    def adjacentProper(self, other):
+    def adjacent_proper(self, other):
         """
         :type other: Rectangle
         :rtype: bool
@@ -54,7 +54,7 @@ class Rectangle:
         
         return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
-    def adjacentPartial(self, other):
+    def adjacent_partial(self, other):
         """
         :type other: Rectangle
         :rtype: bool
@@ -77,7 +77,7 @@ class Rectangle:
         
         return adjacent_top or adjacent_bottom or adjacent_left or adjacent_right
 
-    def adjacentSubline(self, other):
+    def adjacent_subline(self, other):
         """
         :type other: Rectangle
         :rtype: bool
