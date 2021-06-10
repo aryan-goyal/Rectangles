@@ -10,7 +10,9 @@ Analyze rectangles and features that exist among rectangles (Adjacent, containme
 
 The solution was developed in Python. The visualizations are created using the Matplotlib library. 
 
-The [Point](https://github.com/aryan-goyal/Rectangles/blob/main/point.py) class contains an x and a y corrdinate which defines a point. The [Rectangle](https://github.com/aryan-goyal/Rectangles/blob/main/rectangle.py) class contains four Points and potientially a name for the rectangle. Methods for comparison for intersect, contains, adjacent proper, adjacent partial, and adjacent subline are defined within the class.
+The [Point](https://github.com/aryan-goyal/Rectangles/blob/main/point.py) class contains an x and a y coordinate which defines a point. The [Rectangle](https://github.com/aryan-goyal/Rectangles/blob/main/rectangle.py) class contains four Points and potentially a name for the rectangle. Methods for comparison for intersect, contains, adjacent proper, adjacent partial, and adjacent subline are defined within the class.
+
+The main application is in [run.py](https://github.com/aryan-goyal/Rectangles/blob/main/run.py). It takes in a valid JSON file from the command line. This JSON is validated and then the results of the feature analysis are returned to the user.
 
 ## Usage
 
@@ -41,7 +43,7 @@ A rectangle entity is defined by floating-point numbers on a cartesian plane. Th
 }
 ```
 
-The reponses will be output in a JSON format similar to the following:
+The responses will be output in a JSON format similar to the following:
 
 Example: Containment
 ```
@@ -71,9 +73,9 @@ Example: Adjacent (Proper)
 
 Unit tests can be run with the included testing library [pytest](https://docs.pytest.org/en/6.2.x/).
 
-In the directory where [test_all.py](https://github.com/aryan-goyal/Rectangles/blob/main/test_all.py) is located run: `pytest`
+In the directory, where [test_all.py](https://github.com/aryan-goyal/Rectangles/blob/main/test_all.py) is located run: `pytest`
 
-The tests folder contains valid JSON for each of the differnt features as well as for no features and an invalid JSON. 
+The tests folder contains valid JSON for each of the different features as well as for no features and an invalid JSON. 
 
 ## Local Setup
 
