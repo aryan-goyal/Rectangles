@@ -10,6 +10,8 @@ Analyze rectangles and features that exist among rectangles (Adjacent, containme
 
 The solution was developed in Python. The visualizations are created using the Matplotlib library. 
 
+The [Point](https://github.com/aryan-goyal/Rectangles/blob/main/point.py) class contains an x and a y corrdinate which defines a point. The [Rectangle](https://github.com/aryan-goyal/Rectangles/blob/main/rectangle.py) class contains four Points and potientially a name for the rectangle. Methods for comparison for intersect, contains, adjacent proper, adjacent partial, and adjacent subline are defined within the class.
+
 ## Usage
 
 A rectangle entity is defined by floating-point numbers on a cartesian plane. The rectangles (2 or more) can be provided in a JSON format using the following schema. Additional rectangles can be added to the list as needed for feature analysis.

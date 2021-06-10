@@ -97,19 +97,20 @@ def detect_features(rectangles):
     """
     feature = ""
     
-    if rectangles[0].intersects(rectangles[1]):
+    if rectangles[0].intersects(rectangles[1]) or rectangles[1].contains(rectangles[0]):
         feature = "Intersects"
-    elif rectangles[0].contains(rectangles[1]):
+    elif rectangles[0].contains(rectangles[1]) or rectangles[1].contains(rectangles[0]):
         feature = "Contains"
-    elif rectangles[0].adjacent_subline(rectangles[1]):
+    elif rectangles[0].adjacent_subline(rectangles[1]) or rectangles[1].adjacent_subline(rectangles[0]):
         feature = "Adjacent (Sub-line)"
-    elif rectangles[0].adjacent_proper(rectangles[1]):
+    elif rectangles[0].adjacent_proper(rectangles[1]) or rectangles[1].adjacent_proper(rectangles[0]):
         feature = "Adjacent (Proper)"
-    elif rectangles[0].adjacent_partial(rectangles[1]):
+    elif rectangles[0].adjacent_partial(rectangles[1]) or rectangles[1].adjacent_partial(rectangles[0]):
         feature = "Adjacent (Partial)"
     else:
         feature = "No Features Found"
     print(feature)
+
 
 if __name__ == "__main__":
     filepath = sys.argv[1]
@@ -118,6 +119,5 @@ if __name__ == "__main__":
     rectangles = []
     if data:
         rectangles = get_rectangles(data)
+        show_rectangles(rectangles, filepath)
         detect_features(rectangles)
-
-        # show_rectangles(rectangles, filepath)
